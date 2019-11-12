@@ -15,12 +15,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView edmonth;
     private TextView ednext;
-    float money = 0;
+    public float money = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +38,19 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                button();
+            }
+        });
     }
     public void reset() {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
-    public void button(View view) {
+    public void button() {
         if (!TextUtils.isEmpty(edmonth.getText().toString())) {
             float m = Float.parseFloat(edmonth.getText().toString());
             if (m >= 1 && 10 >= m) {
@@ -54,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (m >= 51) {
                 money = (float)((m*12.075)-110.25);
             }
+            Intent intent = new Intent(this,ResultActivity.class);//在匿名類別裡面須加類別名稱
+            startActivity(intent);
             new AlertDialog.Builder(MainActivity.this)
                     .setTitle("每月抄表費用")
                     .setMessage("費用:" + money)
@@ -87,13 +97,13 @@ public class MainActivity extends AppCompatActivity {
                     })
                     .show();
         }
-         if (edmonth.length() == 0 && ednext.length() == 0) {
-             new AlertDialog.Builder(MainActivity.this)
-                     .setTitle("錯誤")
-                     .setMessage("無法計算")
-                     .setPositiveButton("OK",null)
-                     .show();
-         }
+        if (edmonth.length() == 0 && ednext.length() == 0) {
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("錯誤")
+                    .setMessage("無法計算")
+                    .setPositiveButton("OK",null)
+                    .show();
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
