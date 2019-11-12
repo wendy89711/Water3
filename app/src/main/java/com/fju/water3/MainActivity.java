@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public void button(View view) {
         if (!TextUtils.isEmpty(edmonth.getText().toString())) {
             float m = Float.parseFloat(edmonth.getText().toString());
-            if (m >= 0 && 10 >= m) {
+            if (m >= 1 && 10 >= m) {
                 money = (float) ((m*7.35));
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("每月抄表費用")
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!TextUtils.isEmpty(ednext.getText().toString())) {
             float n = Float.parseFloat(ednext.getText().toString());
-            if (n >= 0 && 10 >= n) {
+            if (n >= 1 && 20 >= n) {
                 money = (float) ((n*7.35));
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("每月抄表費用")
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         })
                         .show();
-            } else if (n >= 11 && 30 >= n) {
+            } else if (n >= 21 && 60 >= n) {
                 money = (float)((n*9.45)-42);
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("每月抄表費用")
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         })
                         .show();
-            } else if (n >= 31 && 50 >= n) {
+            } else if (n >= 61 && 100 >= n) {
                 money = (float)((n*11.55)-168);
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("每月抄表費用")
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         })
                         .show();
-            } else if (n >= 51) {
+            } else if (n >= 101) {
                 money = (float)((n*12.075)-220.5);
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("每月抄表費用")
