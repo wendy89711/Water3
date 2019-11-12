@@ -20,7 +20,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private TextView edmonth;
     private TextView ednext;
-    float money;
+    float money = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,105 +47,45 @@ public class MainActivity extends AppCompatActivity {
             float m = Float.parseFloat(edmonth.getText().toString());
             if (m >= 1 && 10 >= m) {
                 money = (float) ((m*7.35));
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("每月抄表費用")
-                        .setMessage("費用:" + money)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                reset();
-                            }
-                        })
-                        .show();
             } else if (m >= 11 && 30 >= m) {
                 money = (float)((m*9.45)-21);
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("每月抄表費用")
-                        .setMessage("費用:" + money)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                reset();
-                            }
-                        })
-                        .show();
             } else if (m >= 31 && 50 >= m) {
                 money = (float)((m*11.55)-84);
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("每月抄表費用")
-                        .setMessage("費用:" + money)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                reset();
-                            }
-                        })
-                        .show();
             } else if (m >= 51) {
                 money = (float)((m*12.075)-110.25);
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("每月抄表費用")
-                        .setMessage("費用:" + money)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                reset();
-                            }
-                        })
-                        .show();
             }
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("每月抄表費用")
+                    .setMessage("費用:" + money)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            reset();
+                        }
+                    })
+                    .show();
         }
         if (!TextUtils.isEmpty(ednext.getText().toString())) {
             float n = Float.parseFloat(ednext.getText().toString());
             if (n >= 1 && 20 >= n) {
                 money = (float) ((n*7.35));
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("每月抄表費用")
-                        .setMessage("費用:" + money)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                reset();
-                            }
-                        })
-                        .show();
             } else if (n >= 21 && 60 >= n) {
                 money = (float)((n*9.45)-42);
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("每月抄表費用")
-                        .setMessage("費用:" + money)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                reset();
-                            }
-                        })
-                        .show();
             } else if (n >= 61 && 100 >= n) {
                 money = (float)((n*11.55)-168);
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("每月抄表費用")
-                        .setMessage("費用:" + money)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                reset();
-                            }
-                        })
-                        .show();
             } else if (n >= 101) {
-                money = (float)((n*12.075)-220.5);
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("每月抄表費用")
-                        .setMessage("費用:" + money)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                reset();
-                            }
-                        })
-                        .show();
+                money = (n*12.075f)-220.5f;
             }
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("每月抄表費用")
+                    .setMessage("費用:" + money)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            reset();
+                        }
+                    })
+                    .show();
         }
          if (edmonth.length() == 0 && ednext.length() == 0) {
              new AlertDialog.Builder(MainActivity.this)
