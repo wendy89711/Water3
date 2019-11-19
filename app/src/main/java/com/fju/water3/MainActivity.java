@@ -63,17 +63,18 @@ public class MainActivity extends AppCompatActivity {
                 money = (float)((m*12.075)-110.25);
             }
             Intent intent = new Intent(this,ResultActivity.class);//在匿名類別裡面須加類別名稱
+            intent.putExtra("MONEY",money);
             startActivity(intent);
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("每月抄表費用")
-                    .setMessage("費用:" + money)
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            reset();
-                        }
-                    })
-                    .show();
+//            new AlertDialog.Builder(MainActivity.this)
+//                    .setTitle("每月抄表費用")
+//                    .setMessage("費用:" + money)
+//                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            reset();
+//                        }
+//                    })
+//                    .show();
         }
         if (!TextUtils.isEmpty(ednext.getText().toString())) {
             float n = Float.parseFloat(ednext.getText().toString());
@@ -86,16 +87,19 @@ public class MainActivity extends AppCompatActivity {
             } else if (n >= 101) {
                 money = (n*12.075f)-220.5f;
             }
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("每月抄表費用")
-                    .setMessage("費用:" + money)
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            reset();
-                        }
-                    })
-                    .show();
+            Intent intent = new Intent(this,ResultActivity.class);
+            intent.putExtra("MONEY", money);
+            startActivity(intent);
+//            new AlertDialog.Builder(MainActivity.this)
+//                    .setTitle("每月抄表費用")
+//                    .setMessage("費用:" + money)
+//                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            reset();
+//                        }
+//                    })
+//                    .show();
         }
         if (edmonth.length() == 0 && ednext.length() == 0) {
             new AlertDialog.Builder(MainActivity.this)
