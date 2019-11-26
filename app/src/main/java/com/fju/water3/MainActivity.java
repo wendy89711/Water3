@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 money = (float)((m*12.075)-110.25);
             }
             Intent intent = new Intent(this,ResultActivity.class);//在匿名類別裡面須加類別名稱
-            intent.putExtra("MONEY",money);
+            intent.putExtra(getString(R.string.extra_money),money);
             startActivity(intent);
 //            new AlertDialog.Builder(MainActivity.this)
 //                    .setTitle("每月抄表費用")

@@ -15,6 +15,9 @@ import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
 
+    private static final String TAG = ResultActivity.class.getSimpleName();
+    private static final float DEFAULT_FEE = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +25,8 @@ public class ResultActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //        Intent intent = getIntent();
-        float money = getIntent().getFloatExtra("MONEY", 0);
-        Log.d("ResultActivity", money + "");
+        float money = getIntent().getFloatExtra(getString(R.string.extra_money), DEFAULT_FEE);
+        Log.d(TAG, money + "");
         TextView moneyText = findViewById(R.id.money);
         int n = (int)(money+0.5f);
         moneyText.setText(n + "");
