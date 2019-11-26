@@ -23,9 +23,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="318dp"
         android:layout_height="88dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/round_corner_background"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="80dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
