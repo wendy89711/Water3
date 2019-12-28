@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void button() {
-        if (!TextUtils.isEmpty(edmonth.getText().toString())) {
+        if (!TextUtils.isEmpty(edmonth.getText().toString()) && isNext == false) {
             float m = Float.parseFloat(edmonth.getText().toString());
             if (m >= 1 && 10 >= m) {
                 money = (float) ((m*7.35));
@@ -143,8 +143,8 @@ public class MainActivity extends AppCompatActivity {
 //                    })
 //                    .show();
         }
-        if (!TextUtils.isEmpty(ednext.getText().toString())) {
-            float n = Float.parseFloat(ednext.getText().toString());
+        if (!TextUtils.isEmpty(edmonth.getText().toString()) && isNext == true) {
+            float n = Float.parseFloat(edmonth.getText().toString());
             if (n >= 1 && 20 >= n) {
                 money = (float) ((n*7.35));
             } else if (n >= 21 && 60 >= n) {
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 //                    })
 //                    .show();
         }
-        if (edmonth.length() == 0 && ednext.length() == 0) {
+        if (edmonth.length() == 0) {
             new AlertDialog.Builder(MainActivity.this)
                     .setTitle("錯誤")
                     .setMessage("無法計算")
